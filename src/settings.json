@@ -12,7 +12,7 @@
     "status": "Online"
   },
   "apiSettings": {
-    "creator": "BagatoByte",
+    "creator": "NagatoByte",
     "requireApikey": false,
     "apikey": {
       "demo": {
