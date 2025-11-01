@@ -1021,9 +1021,9 @@
         <div class="nav-container">
             <a href="/" class="logo">
                 <div class="logo-icon">
-                    <img src="/src/images/icon.webp" alt="Raol Api'S Logo">
+                    <img src="/src/images/icon.webp" alt="Nagato Api'S Logo">
                 </div>
-                Raol Api'S
+                Nagato Api'S
             </a>
             <ul class="nav-links">
                 <li><a href="#overview">Overview</a></li>
@@ -1046,7 +1046,7 @@
                     <i class="bi bi-rocket-takeoff"></i>
                     <span class="gradient-text-badge">REST API Platform</span>
                 </div>
-                <h1>Raol Api'S</h1>
+                <h1>Nagato Api'S</h1>
                 <p>Powerful, scalable, and developer-friendly REST API platform. Build amazing applications with our comprehensive suite of APIs designed for modern development.</p>
                 <div class="cta-buttons">
                     <a href="#features" class="btn btn-primary">
@@ -1066,7 +1066,7 @@
     <section class="features" id="features">
         <div class="container">
             <div class="section-title fade-in">
-                <h2>Why Choose Raol Api'S?</h2>
+                <h2>Why Choose Nagato Api'S?</h2>
                 <p>Built by developers, for developers. We understand what you need to build amazing applications with our powerful REST API platform.</p>
             </div>
             <div class="features-grid">
@@ -1110,12 +1110,12 @@
                     <i class="bi bi-question-circle"></i>
                 </div>
                 <h2>Frequently Asked Questions</h2>
-                <p>Got questions? We've got answers. Find everything you need to know about Raol Api'S Hub.</p>
+                <p>Got questions? We've got answers. Find everything you need to know about Nagato Api'S Hub.</p>
             </div>
             <div class="faq-container">
                 <div class="faq-item fade-in">
                     <button class="faq-question" onclick="toggleFaq(this)">
-                        How do I get started with Raol Api'S REST APIs?
+                        How do I get started with Nagato Api'S REST APIs?
                         <i class="bi bi-chevron-down faq-chevron"></i>
                     </button>
                     <div class="faq-answer">
@@ -1232,8 +1232,8 @@
     <!-- Footer Section -->
     <footer class="main-footer" role="contentinfo">
         <div class="footer-content">
-            <div class="copyright">&copy; 2025 Raol Api'S Corp. All rights reserved.</div>
-            
+            <div class="copyright">&copy; 2025 Nagato Api'S Corp. All rights reserved.</div>
+
             <nav class="footer-links" aria-label="Additional links">
                 <a href="https://whatsapp.com/channel/0029Vb6n9HIDJ6H6oibRvv1D" target="_blank" rel="noopener noreferrer" class="footer-link">
                     <i class="bi bi-whatsapp"></i> Info
@@ -1345,7 +1345,7 @@
             if (!endpoint) return;
 
             document.getElementById('modalTitle').textContent = endpoint.title;
-            
+
             const modalBody = document.getElementById('modalBody');
             modalBody.innerHTML = `
                 <p style="margin-bottom: 1.5rem; color: var(--muted-foreground);">${endpoint.description}</p>
@@ -1390,7 +1390,7 @@
             const endpoint = apiEndpoints[endpointId];
             const formData = new FormData(event.target);
             const params = {};
-            
+
             for (let [key, value] of formData.entries()) {
                 if (value) params[key] = value;
             }
@@ -1414,12 +1414,12 @@
             const faqItem = button.parentElement;
             const answer = faqItem.querySelector('.faq-answer');
             const isActive = faqItem.classList.contains('active');
-            
+
             document.querySelectorAll('.faq-item').forEach(item => {
                 item.classList.remove('active');
                 item.querySelector('.faq-answer').classList.remove('active');
             });
-            
+
             if (!isActive) {
                 faqItem.classList.add('active');
                 answer.classList.add('active');
@@ -1440,7 +1440,7 @@
 
         window.addEventListener('scroll', () => {
             const nav = document.querySelector('.nav');
-            
+
             if (window.scrollY > 100) {
                 nav.style.background = 'rgba(255, 255, 255, 0.98)';
                 nav.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
