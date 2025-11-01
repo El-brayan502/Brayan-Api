@@ -91,4 +91,63 @@
       "createdAt": "2025-10-05T04:45:58.171Z"
     }
   ]
+},
+{
+  "name": "Download",
+  "items": [
+    {
+      "name": "YouTube MP3",
+      "desc": "Descarga audio en formato MP3 desde YouTube",
+      "path": "/download/ytmp3?url=",
+      "status": "ready",
+      "params": {
+        "url": "URL del video de YouTube"
+      }
+    },
+    {
+      "name": "YouTube MP4",
+      "desc": "Descarga video en formato MP4 desde YouTube",
+      "path": "/download/ytmp4?url=",
+      "status": "ready",
+      "params": {
+        "url": "URL del video de YouTube"
+      }
+    },
+    {
+      "name": "Facebook Downloader",
+      "desc": "Descarga videos o reels desde Facebook",
+      "path": "/download/facebook?url=",
+      "status": "ready",
+      "params": {
+        "url": "URL del video de Facebook"
+      }
+    },
+    {
+      "name": "Instagram Downloader",
+      "desc": "Descarga reels, publicaciones o stories desde Instagram",
+      "path": "/download/instagram?url=",
+      "status": "ready",
+      "params": {
+        "url": "URL del post o reel de Instagram"
+      }
+    },
+    {
+      "name": "TikTok Downloader",
+      "desc": "Descarga videos de TikTok sin marca de agua",
+      "path": "/download/tiktok?url=",
+      "status": "ready",
+      "params": {
+        "url": "URL del video de TikTok"
+      }
+    },
+    {
+      "name": "Spotify Downloader",
+      "desc": "Descarga canciones o playlists desde Spotify",
+      "path": "/download/spotify?url=",
+      "status": "ready",
+      "params": {
+        "url": "URL del track o playlist de Spotify"
+      }
+    }
+  ]
 }
