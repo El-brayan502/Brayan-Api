@@ -66,7 +66,7 @@ npm -v # Should print "10.x.x"
 
 #### Alternative: Direct Node.js Installation
 
-If you prefer not to use NVM, you can install Node.js directly:
+Si prefiere no usar NVM, puede instalar Node.js directamente: 
 
 ```bash
 # Update package index
