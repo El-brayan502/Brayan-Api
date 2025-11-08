@@ -130,34 +130,7 @@ npm run build
 npm run production
 ```
 
-The server will start on port 3000 (or the port specified in your environment variables).
-
-## Discord Bot Integration
-
-### Features
-
-The Discord bot provides powerful API management through slash commands:
-
-- **`/stats`** - View real-time API statistics with time period support
-- **`/maintenance`** - Toggle maintenance mode on/off
-- **`/apikey`** - Manage API keys (add, delete, toggle, list)
-- **`/endpoint`** - Manage API endpoints (add, delete, list, scan)
-
-### Setting Up Discord Bot
-
-1. **Create a Discord Application:**
-   - Go to [Discord Developer Portal](https://discord.com/developers/applications)
-   - Create a new application
-   - Go to "Bot" section and create a bot
-   - Copy the bot token
-
-2. **Configure Bot Permissions:**
-   - Enable "Message Content Intent" in Bot settings
-   - Invite bot to your server with appropriate permissions
-
-3. **Add Token to Environment:**
-   ```env
-   DISCORD_TOKEN=your_actual_bot_token_here
+El servidor se iniciará en el puerto 3000 (o en el puerto especificado en sus variables de entorno). ## Integración del bot de Discord ### Funcionalidades El bot de Discord ofrece una potente gestión de la API mediante comandos de barra diagonal: - **`/stats`** - Visualiza estadísticas de la API en tiempo real con soporte para periodos de tiempo - **`/maintenance`** - Activa/desactiva el modo de mantenimiento - **`/apikey`** - Gestiona las claves de la API (añadir, eliminar, alternar, listar) - **`/endpoint`** - Gestiona los endpoints de la API (añadir, eliminar, listar, escanear) ### Configuración del bot de Discord 1. **Crea una aplicación de Discord:** - Ve al [Portal para desarrolladores de Discord](https://discord.com/developers/applications) - Crea una nueva aplicación - Ve a la sección "Bot" y crea un bot - Copia el token del bot 2. **Configura los permisos del bot:** - Habilita "Intención de contenido del mensaje" en la configuración del bot - Invita al bot a tu servidor con los permisos adecuados 3. **Añade el token al entorno:** ```env DISCORD_TOKEN=tu_token_de_bot_aquí 
    ```
 
 ### Discord Commands
