@@ -492,8 +492,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 <div align="center">
   <p>Made with ❤️ by <strong>RaolByte</strong></p>
   <p>
-    <a href="https://github.com/raolbyte/Raol-UI">⭐ Star this repo</a> •
-    <a href="https://github.com/raolbyte/Raol-UI/issues">🐛 Report Bug</a> •
-    <a href="https://github.com/raolbyte/Raol-UI/pulls">💡 Request Feature</a>
+    <a href="https://github.com/raolbyte/Brayan-Api">⭐ Star this repo</a> •
+    <a href="https://github.com/raolbyte/Brayan-Api/issues">🐛 Report Bug</a> •
+    <a href="https://github.com/raolbyte/Brayan-Api/pulls">💡 Request Feature</a>
   </p>
 </div>
