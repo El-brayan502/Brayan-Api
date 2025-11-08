@@ -3,7 +3,7 @@
 <div align="center">
   <img src="https://raw.githubusercontent.com/El-brayan502/dat3/main/uploads/9868df-1762558122218.png" alt="Raol APIs Logo" width="120" height="120">
   
-  **Simple and easy to use API with Discord Bot Integration.**
+  **API sencilla y fácil de usar con integración de bot de Discord.** 
   
   [![Version](https://img.shields.io/badge/version-LATEST%207.1.0-blue.svg)](https://github.com/raolbyte/Raol-UI)
   [![Node.js](https://img.shields.io/badge/node.js-%3E%3D%2020.0.0-green.svg)](https://nodejs.org/)
