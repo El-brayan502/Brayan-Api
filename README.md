@@ -17,7 +17,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Support
 
 - **Issues:** [GitHub Issues](https://github.com/raolbyte/Raol-UI/issues)
-- **Contact:** [Support Page](https://whatsapp.com/channel/0029Vb6n9HIDJ6H6oibRvv1D)
+- **Contact:** [Support Page](https://whatsapp.com/channel/0029Vb6BDQc0lwgsDN1GJ31i)
 
 ---
 
