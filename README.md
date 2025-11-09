@@ -22,7 +22,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 <div align="center">
-  <p>Made with ❤️ by <strong>RaolByte</strong></p>
+  <p>Made with ❤️ by <strong>Brayanx330</strong></p>
   <p>
     <a href="https://github.com/raolbyte/Brayan-Api">⭐ Star this repo</a> •
     <a href="https://github.com/raolbyte/Brayan-Api/issues">🐛 Report Bug</a> •
