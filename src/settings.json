@@ -145,7 +145,7 @@
         {
           "name": "AI Image Unblur",
           "desc": "Enhance or deblur a blurry image using AI-powered upscaling.",
-          "path": "/tools/unblur?url=",
+          "path": "/maker/hd?url=",
           "status": "ready",
           "params": {
             "url": "URL of the image to be unblurred (required)"
