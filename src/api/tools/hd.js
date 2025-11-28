@@ -1,25 +1,25 @@
-import express from "express"
-import fetch from "node-fetch"
-import FormData from "form-data"
-import axios from "axios"
-const router = express.Router()
 
-router.get('/hd', async (req, res) => {
+import fetch from 'node-fetch'
+import FormData from 'form-data'
+import axios from 'axios'
+
+export default async function handler(req, res) {
   try {
     const url = req.query.url
-    if (!url)
+    if (!url) {
       return res.status(400).json({
         status: false,
         message: "Falta el parámetro: ?url="
       })
+    }
 
-    // Descargar imagen desde URL
+    // Descargar imagen desde link
     const img = await axios.get(url, { responseType: 'arraybuffer' })
     const mime = img.headers['content-type'] || "image/jpeg"
     const ext = mime.split('/')[1]
-    const filename = `image_${Date.now()}.${ext}`
+    const filename = `hd_${Date.now()}.${ext}`
 
-    // Crear formulario
+    // Crear form para Pixelcut
     const form = new FormData()
     form.append('image', img.data, { filename, contentType: mime })
     form.append('scale', '2')
@@ -31,34 +31,33 @@ router.get('/hd', async (req, res) => {
       'x-locale': 'es'
     }
 
-    // Llamar al API real de Pixelcut
-    const response = await fetch('https://api2.pixelcut.app/image/upscale/v1', {
+    // Enviar a servidor de upscale
+    const result = await fetch('https://api2.pixelcut.app/image/upscale/v1', {
       method: 'POST',
       headers,
       body: form
     })
 
-    if (!response.ok) {
-      return res.status(response.status).json({
+    if (!result.ok) {
+      return res.status(result.status).json({
         status: false,
-        message: `Error del servidor externo: ${response.status}`
+        message: `Error del servidor externo: ${result.status}`
       })
     }
 
-    const result = await response.json()
+    const json = await result.json()
 
-    // Devolver resultado
-    res.json({
+    // Respuesta final
+    return res.json({
       status: true,
-      upscale: result
+      upscale: json,
+      creator: "Brayan"
     })
 
   } catch (e) {
-    res.status(500).json({
+    return res.status(500).json({
       status: false,
       error: e.message
     })
   }
-})
-
-export default router
+}
