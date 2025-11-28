@@ -143,7 +143,7 @@
       "name": "Tools",
       "items": [
         {
-          "name": "AI Image HD",
+          "name": "AI Image HD 4k",
           "desc": "Enhance, upscale or improve image quality using Pixelcut AI upscaling.",
           "path": "/tools/hd?url=",
           "status": "ready",
