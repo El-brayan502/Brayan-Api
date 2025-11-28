@@ -1,63 +1,34 @@
+import fetch from "node-fetch";
+import FormData from "form-data";
 
-import fetch from 'node-fetch'
-import FormData from 'form-data'
-import axios from 'axios'
+export default function hdRoute(app) {
+  app.get("/tools/hd", async (req, res) => {
+    try {
+      const imageUrl = req.query.url;
+      if (!imageUrl) return res.status(400).json({ error: "Missing image URL" });
 
-export default async function handler(req, res) {
-  try {
-    const url = req.query.url
-    if (!url) {
-      return res.status(400).json({
-        status: false,
-        message: "Falta el parámetro: ?url="
-      })
+      const form = new FormData();
+      form.append("image", await (await fetch(imageUrl)).buffer(), { filename: "image.jpg" });
+      form.append("scale", "2");
+
+      const response = await fetch("https://api2.pixelcut.app/image/upscale/v1", {
+        method: "POST",
+        headers: {
+          ...form.getHeaders(),
+          accept: "application/json",
+          "x-client-version": "web",
+          "x-locale": "es",
+        },
+        body: form,
+      });
+
+      if (!response.ok) return res.status(response.status).json({ error: "Failed to process image" });
+
+      const result = await response.json();
+      res.json(result);
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: "Server error" });
     }
-
-    // Descargar imagen desde link
-    const img = await axios.get(url, { responseType: 'arraybuffer' })
-    const mime = img.headers['content-type'] || "image/jpeg"
-    const ext = mime.split('/')[1]
-    const filename = `hd_${Date.now()}.${ext}`
-
-    // Crear form para Pixelcut
-    const form = new FormData()
-    form.append('image', img.data, { filename, contentType: mime })
-    form.append('scale', '2')
-
-    const headers = {
-      ...form.getHeaders(),
-      'accept': 'application/json',
-      'x-client-version': 'web',
-      'x-locale': 'es'
-    }
-
-    // Enviar a servidor de upscale
-    const result = await fetch('https://api2.pixelcut.app/image/upscale/v1', {
-      method: 'POST',
-      headers,
-      body: form
-    })
-
-    if (!result.ok) {
-      return res.status(result.status).json({
-        status: false,
-        message: `Error del servidor externo: ${result.status}`
-      })
-    }
-
-    const json = await result.json()
-
-    // Respuesta final
-    return res.json({
-      status: true,
-      upscale: json,
-      creator: "Brayan"
-    })
-
-  } catch (e) {
-    return res.status(500).json({
-      status: false,
-      error: e.message
-    })
-  }
+  });
 }
