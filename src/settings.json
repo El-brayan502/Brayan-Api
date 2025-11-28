@@ -143,12 +143,12 @@
       "name": "Tools",
       "items": [
         {
-          "name": "AI Image Unblur",
-          "desc": "Enhance or deblur a blurry image using AI-powered upscaling.",
-          "path": "/maker/hd?url=",
+          "name": "AI Image HD",
+          "desc": "Enhance, upscale or improve image quality using Pixelcut AI upscaling.",
+          "path": "/tools/hd?url=",
           "status": "ready",
           "params": {
-            "url": "URL of the image to be unblurred (required)"
+            "url": "Direct URL of the image to enhance (required)"
           }
         }
       ]
