@@ -1,97 +1,91 @@
-import axios from "axios"
-import FormData from "form-data"
-import { createApiKeyMiddleware } from "../../middleware/apikey.js"
+module.exports = function (app) {
+  const axios = require("axios");
+  const FormData = require("form-data");
 
-export default (app) => {
-
-  // Función que llama al Pixelcut Upscaler
-  async function upscaleHD(url) {
+  async function pixelHD(imageUrl) {
     try {
-      // Descargar la imagen primero
-      const imgRes = await axios.get(url, {
+      // Descargar la imagen
+      const img = await axios.get(imageUrl, {
         responseType: "arraybuffer",
-        timeout: 20000,
-      })
+        timeout: 20000
+      });
 
-      const form = new FormData()
-      form.append("image", imgRes.data, {
+      const form = new FormData();
+      form.append("image", img.data, {
         filename: "image.jpg",
         contentType: "image/jpeg"
-      })
-      form.append("scale", "2")
+      });
+      form.append("scale", "2");
 
       const headers = {
         ...form.getHeaders(),
         accept: "application/json",
         "x-client-version": "web",
-        "x-locale": "es",
-      }
+        "x-locale": "es"
+      };
 
       // Enviar a Pixelcut
-      const response = await axios.post(
+      const res = await axios.post(
         "https://api2.pixelcut.app/image/upscale/v1",
         form,
         {
-          timeout: 35000,
-          headers,
+          timeout: 30000,
+          headers
         }
-      )
+      );
 
-      const result = response.data
+      const data = res.data;
 
-      if (!result?.result_url) {
-        throw new Error("Pixelcut no regresó una URL válida")
+      if (!data?.result_url) {
+        throw new Error("Pixelcut no devolvió imagen");
       }
 
-      // Descargar imagen final
-      const output = await axios.get(result.result_url, {
+      // Descargar la imagen mejorada
+      const finalImg = await axios.get(data.result_url, {
         responseType: "arraybuffer",
-        timeout: 20000,
-      })
+        timeout: 30000
+      });
 
-      return Buffer.from(output.data)
+      return Buffer.from(finalImg.data);
 
-    } catch (error) {
-      console.error("Error Pixelcut HD:", error)
-      throw new Error(error.message || "Error al mejorar imagen")
+    } catch (e) {
+      console.error("❌ Error HD:", e);
+      return { error: e.message || "Error al mejorar la imagen" };
     }
   }
 
-  // Endpoint: /maker/hd
-  app.get("/maker/hd", createApiKeyMiddleware(), async (req, res) => {
+  app.get("/tools/hd", async (req, res) => {
     try {
-      let { url } = req.query
+      const { url } = req.query;
 
       if (!url) {
         return res.status(400).json({
           status: false,
-          message: "Falta el parámetro 'url' con una imagen válida"
-        })
+          message: "Falta el parámetro 'url'"
+        });
       }
 
-      if (!url.startsWith("http") && !url.startsWith("data:image")) {
-        return res.status(400).json({
+      const result = await pixelHD(url);
+
+      if (result.error) {
+        return res.status(500).json({
           status: false,
-          message: "URL inválida. Debe ser una imagen http o Base64."
-        })
+          message: "No se pudo mejorar la imagen",
+          error: result.error
+        });
       }
 
-      const hdBuffer = await upscaleHD(url)
+      res.setHeader("Content-Type", "image/jpeg");
+      res.setHeader("Content-Length", result.length);
+      res.setHeader("Cache-Control", "public, max-age=3600");
 
-      res.setHeader("Content-Type", "image/jpeg")
-      res.setHeader("Content-Length", hdBuffer.length)
-      res.setHeader("Cache-Control", "public, max-age=3600")
-
-      return res.end(hdBuffer)
+      return res.end(result);
 
     } catch (error) {
-      console.error("HD Endpoint Error:", error)
-
-      return res.status(500).json({
+      res.status(500).json({
         status: false,
-        message: "No se pudo mejorar la imagen",
         error: error.message
-      })
+      });
     }
-  })
-    }
+  });
+};
